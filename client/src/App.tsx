@@ -6,8 +6,8 @@ const App: React.FC = () => {
   const [message, setMessage] = useState<string>("");
   const [input, setInput] = useState<string>("");
   const wsRef = useRef<WebSocket>();
-  const HOST = import.meta.env.VITE_ONE_THING_HOST
-  const PORT = import.meta.env.VITE_ONE_THING_PORT
+  const HOST = import.meta.env.VITE_ONE_THING_HOST;
+  const PORT = import.meta.env.VITE_ONE_THING_PORT;
 
   useEffect(() => {
     // connect to the server
