@@ -6,10 +6,12 @@ const App: React.FC = () => {
   const [message, setMessage] = useState<string>("");
   const [input, setInput] = useState<string>("");
   const wsRef = useRef<WebSocket>();
+  const HOST = import.meta.env.VITE_ONE_THING_HOST
+  const PORT = import.meta.env.VITE_ONE_THING_PORT
 
   useEffect(() => {
     // connect to the server
-    const ws = new WebSocket("ws://localhost:3000");
+    const ws = new WebSocket("ws://" + HOST + PORT);
     wsRef.current = ws;
 
     ws.addEventListener("open", () => {
