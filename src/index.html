@@ -1,10 +1,9 @@
 <html>
 
 <body>
-    <h1>one thing</h1>
+    <h1 id="message">one thing</h1>
     <input id="input" type="text" />
     <input id="send" type="submit" />
-    </ul id="messages">
     <script src="/socket.io/socket.io.js"></script>
     <script>
         const socket = io();
@@ -12,6 +11,11 @@
         const clearText = () => {
             document.getElementById('input').value = '';
         }
+
+        const replaceMessage = (message) => {
+            const m = document.getElementById('message');
+            m.innerHTML = message;
+        };
 
         document.getElementById('send').addEventListener('click', () => {
 
@@ -25,6 +29,10 @@
             socket.emit('sendMessage', inputMessage);
 
             clearText();
+
+            socket.on('receiveMessage', (message) => {
+                replaceMessage(message);
+            });
         });
     </script>
     </script>

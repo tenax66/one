@@ -27,5 +27,8 @@ io.on("connection", (socket) => {
 
   socket.on("sendMessage", (message) => {
     console.log("received message: ", message);
+
+    // broadcast the received message
+    io.emit("receiveMessage", message);
   });
 });
