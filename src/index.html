@@ -17,6 +17,10 @@
             m.innerHTML = message;
         };
 
+        socket.on("welcomeMessage", (message) => {
+            replaceMessage(message);
+        });
+
         document.getElementById('send').addEventListener('click', () => {
 
             // get the input text
