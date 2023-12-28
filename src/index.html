@@ -1,12 +1,33 @@
 <html>
-  <body>
+
+<body>
     <h1>one thing</h1>
     <input id="input" type="text" />
     <input id="send" type="submit" />
-  </ul id="messages">
-  <script src="/socket.io/socket.io.js"></script>
+    </ul id="messages">
+    <script src="/socket.io/socket.io.js"></script>
     <script>
-      const socket = io();
+        const socket = io();
+
+        const clearText = () => {
+            document.getElementById('input').value = '';
+        }
+
+        document.getElementById('send').addEventListener('click', () => {
+
+            // get the input text
+            let inputMessage = document.getElementById('input').value;
+
+            if (inputMessage === '') {
+                return;
+            }
+
+            socket.emit('sendMessage', inputMessage);
+
+            clearText();
+        });
     </script>
-  </body>
+    </script>
+</body>
+
 </html>
