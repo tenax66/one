@@ -1,17 +1,17 @@
-const express = require("express");
-const http = require("http");
-const socketio = require("socket.io");
+import express from "express";
+import http from "http";
+import { Server } from "socket.io";
 
 const app = express();
-const server = http.Server(app);
-const io = socketio(server);
+const server = http.createServer(app);
+const io = new Server(server);
 
-const PORT = process.env.PORT || 3000;
+const PORT: number = Number(process.env.PORT) || 3000;
 
-let MESSAGE = "One Thing";
+let MESSAGE: string = "One Thing";
 
 // routing
-app.get("/", (req, res) => {
+app.get("/", (req: express.Request, res: express.Response) => {
   res.sendFile(__dirname + "/index.html");
 });
 
@@ -30,7 +30,7 @@ io.on("connection", (socket) => {
     console.log(`user disconnected: ${socket.id}`);
   });
 
-  socket.on("sendMessage", (m) => {
+  socket.on("sendMessage", (m: string) => {
     console.log("received message: ", m);
 
     // TODO: tuning performance
