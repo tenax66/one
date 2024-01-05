@@ -8,7 +8,7 @@ const io = new Server(server);
 
 const PORT: number = Number(process.env.PORT) || 3000;
 
-let MESSAGE: string = "One Thing";
+let MESSAGE: string = "One thing";
 
 // routing
 app.get("/", (req: express.Request, res: express.Response) => {
