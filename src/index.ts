@@ -6,9 +6,9 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server);
 
-const PORT: number = Number(process.env.PORT) || 3000;
+const PORT = Number(process.env.PORT) || 3000;
 
-let MESSAGE: string = "One thing";
+let MESSAGE = "One thing";
 
 // routing
 app.get("/", (req: express.Request, res: express.Response) => {
