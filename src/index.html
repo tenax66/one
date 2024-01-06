@@ -45,6 +45,11 @@
             replaceMessage(message);
         });
 
+        // To receive the message before sending
+        socket.on('receiveMessage', (message) => {
+            replaceMessage(message);
+        });
+
         document.getElementById('send').addEventListener('click', () => {
 
             // get the input text
