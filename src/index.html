@@ -42,7 +42,7 @@
     </div>
 
     <div class="footer">
-        <form class="d-flex">
+        <form class="d-flex" onsubmit="broadcastMessage(); return false;">
             <input id="input" class="form-control me-2" type="text" placeholder="Input" maxlength="400">
             <button id="send" class="btn btn-primary" type="submit">Submit</button>
         </form>
@@ -70,7 +70,7 @@
             replaceMessage(message);
         });
 
-        document.getElementById('send').addEventListener('click', () => {
+        function broadcastMessage() {
 
             // get the input text
             let inputMessage = document.getElementById('input').value;
@@ -86,7 +86,7 @@
             socket.on('receiveMessage', (message) => {
                 replaceMessage(message);
             });
-        });
+        };
     </script>
 </body>
 
