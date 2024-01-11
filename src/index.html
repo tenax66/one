@@ -43,7 +43,7 @@
 
     <div class="footer">
         <form class="d-flex">
-            <input id="input" class="form-control me-2" type="text" placeholder="Input">
+            <input id="input" class="form-control me-2" type="text" placeholder="Input" maxlength="400">
             <button id="send" class="btn btn-primary" type="button">Submit</button>
         </form>
     </div>
@@ -58,7 +58,7 @@
 
         const replaceMessage = (message) => {
             const m = document.getElementById('content');
-            m.innerHTML = message;
+            m.innerText = message;
         };
 
         socket.on("welcomeMessage", (message) => {

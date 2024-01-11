@@ -34,9 +34,18 @@ io.on("connection", (socket) => {
     console.log("received message: ", m);
 
     // TODO: tuning performance
-    MESSAGE = m;
+    MESSAGE = escapeHtml(m);
 
     // broadcast the received message
-    io.emit("receiveMessage", m);
+    io.emit("receiveMessage", MESSAGE);
   });
 });
+
+function escapeHtml(unsafe: string): string {
+  return unsafe
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
