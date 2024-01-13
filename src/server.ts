@@ -10,14 +10,18 @@ const PORT = Number(process.env.PORT) || 3000;
 
 let MESSAGE = "One thing";
 
-// routing
-app.get("/", (req: express.Request, res: express.Response) => {
+// Routing
+const router = express.Router();
+
+router.get("/", (req: express.Request, res: express.Response) => {
   res.sendFile(__dirname + "/index.html");
 });
 
-app.get("/index.css", (req: express.Request, res: express.Response) => {
+router.get("/index.css", (req: express.Request, res: express.Response) => {
   res.sendFile(__dirname + "/index.css");
 });
+
+app.use("/", router);
 
 // run
 server.listen(PORT, () => {
