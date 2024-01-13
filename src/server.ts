@@ -15,6 +15,10 @@ app.get("/", (req: express.Request, res: express.Response) => {
   res.sendFile(__dirname + "/index.html");
 });
 
+app.get("/index.css", (req: express.Request, res: express.Response) => {
+  res.sendFile(__dirname + "/index.css");
+});
+
 // run
 server.listen(PORT, () => {
   console.log(`server running on port ${PORT}`);
