@@ -1,6 +1,7 @@
 import express from "express";
 import http from "http";
 import { Server } from "socket.io";
+import { createRouter } from "./router";
 
 const app = express();
 const server = http.createServer(app);
@@ -10,18 +11,8 @@ const PORT = Number(process.env.PORT) || 3000;
 
 let MESSAGE = "One thing";
 
-// Routing
-const router = express.Router();
-
-router.get("/", (req: express.Request, res: express.Response) => {
-  res.sendFile(__dirname + "/index.html");
-});
-
-router.get("/index.css", (req: express.Request, res: express.Response) => {
-  res.sendFile(__dirname + "/index.css");
-});
-
-app.use("/", router);
+// use router
+app.use("/", createRouter());
 
 // run
 server.listen(PORT, () => {
