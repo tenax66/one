@@ -20,3 +20,8 @@ body {
   bottom: 0;
   width: 100%;
 }
+
+.copyright {
+  font-size: x-small;
+  color: #708090;
+}
